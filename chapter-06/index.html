@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booleans And If/Else</title>
+</head>
+
+<body>
+    <p>Card Quantity Projet</p>
+    <button onclick="console.log(countQuantity)">Show Quantity</button>
+    <button onclick="
+   if((countQuantity+1 >= 10)){
+     alert('The cart is full');
+       
+}else{
+     countQuantity+=1;
+        console.log(countQuantity);
+}
+      ">Add the Quantity</button>
+    <button onclick="
+   if((countQuantity > 10)){
+     alert('The cart is full');
+       
+}else{
+     countQuantity+=2;
+        console.log(countQuantity);
+}">+2</button>
+    <button onclick="
+   if((countQuantity +3 > 10)){
+     alert('The cart is full');
+       
+}else{
+     countQuantity+=3;
+        console.log(countQuantity);
+}">+3</button>
+
+    <button onclick="
+   if((countQuantity +4 > 10)){
+     alert('The cart is full');
+       
+}else{
+     countQuantity+=4;
+        console.log(countQuantity);
+}">+4</button>
+    <button onclick="
+    if((countQuantity +5 > 10)){
+     alert('The cart is full');
+       
+}else{
+     countQuantity+=5;
+        console.log(countQuantity);
+}">+5</button>
+
+    <button onclick="
+    if(countQuantity-1 <0){
+        alert('Not enough item in the cart');
+    }else{
+        countQuantity--;
+        console.log(countQuantity);
+    }
+    ">Remove the Quantity</button>
+
+    <button onclick="
+     if(countQuantity-2 <0){
+        alert('Not enough item in the cart');
+    }else{
+        countQuantity-=2;
+        console.log(countQuantity);
+    }
+    ">-2</button>
+    <button onclick="
+    if(countQuantity-3<0){
+        alert('Not enough item in the cart');
+    }else{
+        countQuantity-=3;
+        console.log(countQuantity);
+    }
+    ">-3</button>
+
+
+
+
+
+
+
+
+    <script>
+        // 6a & 6b & 6c 
+        let hours = 20;
+        let name = 'Rohit'
+        if (hours > 6 && hours < 13) {
+            console.log('Good, Morning!' + name);
+        } else if (hours > 12 && hours < 18) {
+            console.log('Good, Afternoon!' + name);
+        } else {
+            console.log('Good, Night!' + name)
+        }
+
+
+        // 6d & 6e
+        let age = 19;
+        let isHoilday = true
+        if ((age <= 6 || age >= 65) && isHoilday) {
+            console.log('Discount');
+        } else {
+            console.log('No Discount');
+        }
+
+
+        // Coin-flip game
+        // 6f
+        let ComputerGuess = Math.random();
+        let result = '';
+        let guess = 'Heads';
+        if (ComputerGuess > 0.6) {
+            console.log('Heads');
+            result = 'Heads';
+        } else {
+            console.log('Tails');
+            result = 'Tails';
+        }
+
+        if (result === guess) {
+            console.log('You Win!');
+        } else {
+            console.log('You Lose!');
+        }
+
+        // 6j
+        console.log((result === guess) ? 'You Win !' : 'You lose !');
+
+        // 6k
+        let countQuantity = 0;
+
+
+
+
+    </script>
+</body>
+
+</html>
