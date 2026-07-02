@@ -1,0 +1,257 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Functions</title>
+    </head>
+
+    <body>
+        <p>
+            <button onclick="
+            updateCalculation(1)
+        ">1</button>
+
+            <button onclick="
+        updateCalculation(2)
+        ">2</button>
+
+            <button onclick="
+            updateCalculation(3)
+        ">3</button>
+
+            <button onclick="
+            updateCalculation(' + ')
+        ">+</button>
+        </p>
+
+        <p>
+            <button onclick="
+        updateCalculation(4)
+        ">4</button>
+
+            <button onclick="
+            updateCalculation(5)
+        ">5</button>
+
+            <button onclick="
+            updateCalculation(6)
+        ">6</button>
+
+            <button onclick="
+            updateCalculation(' - ')
+        ">-</button>
+        </p>
+
+        <p>
+            <button onclick="
+            updateCalculation(7)
+        ">7</button>
+
+            <button onclick="
+            updateCalculation(8)
+        ">8</button>
+
+            <button onclick="
+            updateCalculation(9)
+        ">9</button>
+
+            <button onclick="
+            updateCalculation(' * ')
+        ">*</button>
+        </p>
+
+        <p>
+            <button onclick="
+        updateCalculation(0)
+        ">0</button>
+
+            <button onclick="
+            updateCalculation('.')
+        ">.</button>
+
+            <button onclick="
+            updateCalculation('=')
+        ">=</button>
+
+            <button onclick="
+            updateCalculation(' / ')
+        ">/</button>
+        </p>
+
+        <p>
+            <button onclick="
+        updateCalculation('')
+        ">Clear</button>
+        </p>
+
+
+        <br>
+        <br>
+        <br>
+        <hr>
+
+            <p>Card Quantity Projet</p>
+            <button onclick="console.log(countQuantity)">Show Quantity</button>
+            <button onclick="
+                updateCardQuantity(1)
+            ">Add the Quantity</button>
+                    <button onclick="
+                         updateCardQuantity(2)
+                             ">+2</button>
+            <button onclick="
+        updateCardQuantity(3)
+        ">+3</button>
+
+            <button onclick="
+        updateCardQuantity(4)
+        ">+4</button>
+            <button onclick="
+            updateCardQuantity(5)
+            ">+5</button>
+
+            <button onclick="
+        updateCardQuantity(-1)
+            ">Remove the Quantity</button>
+
+            <button onclick="
+            updateCardQuantity(-2)
+            ">-2</button>
+            <button onclick="
+            updateCardQuantity(-3)
+            ">-3</button>
+
+
+
+
+
+        <script>
+            // 7a and 7b and 7c
+            function greet(name) {
+                if (!name) {
+                    console.log('Hi there !');
+                } else {
+                    console.log(`Hello ${name}!`);
+                }
+            }
+            greet('Rohit');
+            greet('Rohan');
+            greet('Mohit');
+            greet('Himanshu');
+            greet();
+
+            // 7d
+
+            function convertToFahenheit(celsius) {
+                let fahenheit = 0
+                fahenheit = (celsius * 9 / 5) + 32;
+                return fahenheit
+            }
+            console.log(convertToFahenheit(25));
+
+            // 7e
+
+            function convertToCelsuis(fahenheit) {
+                let celsuis = (fahenheit - 32) * 5 / 9
+                return celsuis;
+            }
+            console.log(convertToCelsuis(86));
+
+            // 7f
+            let result = ''
+
+            function convertToTemperature(degree, unit) {
+                if (unit === 'C') {
+                    result = convertToFahenheit(degree);
+                } else {
+                    result = convertToCelsuis(degree);
+                }
+                return `${result}`;
+            }
+            console.log(`Converted Temperature In Fahenheit :  ${convertToTemperature(25, 'C')}F`);
+            console.log(`Converted Temperature In Celsuis :  ${convertToTemperature(86, 'F')}C`);
+
+            // 7g
+
+            function convertLength(length, from, to) {
+                if (from === 'km' && to === 'miles') {
+                    return length * 10 / 16;
+                }
+
+                else if (from === 'miles' && to === 'km') {
+                    return length * 16 / 10;
+                }
+
+                else if (from === 'km' && to === 'ft') {
+                    return length * 3281;
+                }
+
+                else if (from === 'miles' && to === 'ft') {
+                    return length * 5280;
+                }
+
+                else if ((from === 'miles' && to === 'miles') || (from === 'km' && to === 'km')) {
+                    return length;
+                }
+
+                else {
+                    return `Invalid input : ${from}`;
+                }
+            }
+            console.log(` ${convertLength(50, 'miles', 'km')}km`);
+            console.log(` ${convertLength(32, 'km', 'miles')}miles`);
+            console.log(` ${convertLength(50, 'km', 'km')}km`);
+            console.log(` ${convertLength(5, 'miles', 'km')}km`);
+            console.log(` ${convertLength(5, 'miles', 'ft')}ft`);
+            console.log(` ${convertLength(5, 'km', 'ft')}ft`);
+            console.log(` ${convertLength(5, 'ibs', 'ibs')}`);
+
+
+            //  7j
+            let calculation = '';
+            function updateCalculation(number) {
+                if (number === '=') {
+                    calculation = eval(calculation);
+                    console.log(calculation);
+                } else if (number === '') {
+                    calculation = "";
+                    console.log(calculation);
+                } else {
+                    calculation += `${number}`;
+                    console.log(calculation);
+                }
+            }
+
+
+            // 7k
+
+            let countQuantity = 0;
+            function updateCardQuantity(number) {
+                if (number > 0) {
+                    if ((countQuantity + number > 10)) {
+                        alert('The cart is full');
+                        return;
+
+                    } else {
+                        countQuantity += number;
+                        console.log(countQuantity);
+                    }
+
+                } else {
+                    if (countQuantity - (-number) < 0) {
+                        alert('Not enough item in the cart');
+                    } else {
+                        countQuantity -= (-number);
+                        console.log(countQuantity);
+                    }
+                }
+
+            }
+
+
+
+        </script>
+    </body>
+
+    </html>
