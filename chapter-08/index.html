@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+
+<body>
+
+    <p>
+        <button onclick="
+            updateCalculation(1)
+        ">1</button>
+
+        <button onclick="
+        updateCalculation(2)
+        ">2</button>
+
+        <button onclick="
+            updateCalculation(3)
+        ">3</button>
+
+        <button onclick="
+            updateCalculation(' + ')
+        ">+</button>
+    </p>
+
+    <p>
+        <button onclick="
+        updateCalculation(4)
+        ">4</button>
+
+        <button onclick="
+            updateCalculation(5)
+        ">5</button>
+
+        <button onclick="
+            updateCalculation(6)
+        ">6</button>
+
+        <button onclick="
+            updateCalculation(' - ')
+        ">-</button>
+    </p>
+
+    <p>
+        <button onclick="
+            updateCalculation(7)
+        ">7</button>
+
+        <button onclick="
+            updateCalculation(8)
+        ">8</button>
+
+        <button onclick="
+            updateCalculation(9)
+        ">9</button>
+
+        <button onclick="
+            updateCalculation(' * ')
+        ">*</button>
+    </p>
+
+    <p>
+        <button onclick="
+        updateCalculation(0)
+        ">0</button>
+
+        <button onclick="
+            updateCalculation('.')
+        ">.</button>
+
+        <button onclick="
+            updateCalculation('=')
+        ">=</button>
+
+        <button onclick="
+            updateCalculation(' / ')
+        ">/</button>
+    </p>
+
+    <p>
+        <button onclick="
+        updateCalculation('')
+        ">Clear</button>
+    </p>
+
+    <p>Coin Flip game</p>
+    <button onclick="playCoinGame('Heads')">Heads</button>
+    <button onclick="playCoinGame('Tails')">Tails</button>
+
+
+
+    <script>
+        // 8a
+        const product = {
+            product_name: "Basketball:",
+            price: 2095
+        }
+        console.log(product);
+
+        // 8b
+        console.log(product.price + 500);
+
+        // 8c
+        product['delivery-time'] = '3 day';
+        console.log(product);
+
+        //8d
+        const product1 = {
+            name: 'Basketball',
+            price: 200
+        }
+
+        const product2 = {
+            name: 'Basketball',
+            price: 200
+        }
+
+        function compareProduct(product1, product2) {
+            if (product1.price > product2.price) {
+                return product2
+            } else {
+                return product1
+            }
+        }
+
+        console.log(compareProduct(product1, product2))
+
+
+        // 8e
+
+        function isSmaeProduct(product1, product2) {
+            if (product1.name === product2.name && product1.price === product2.price) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        console.log(isSmaeProduct(product1, product2))
+
+        // 8f
+        const massage = 'Hey I Become a JavaScript Developer';
+        console.log(massage.toLowerCase());
+
+        // 8g
+        console.log(massage.repeat(3));
+
+
+        // 8h
+        let calculation = JSON.parse(localStorage.getItem('calculation')) || '';
+
+
+        function updateCalculation(number) {
+            if (number === '=') {
+                calculation = eval(calculation);
+                console.log(calculation);
+            } else if (number === '') {
+                calculation = "";
+                console.log(calculation);
+            } else {
+                calculation += `${number}`;
+                console.log(calculation);
+            }
+            localStorage.setItem('calculation', JSON.stringify(calculation));
+        }
+
+
+
+
+
+        let result = '';
+        let final = '';
+        let ComputerGuess = Math.random();
+        let score = JSON.parse(localStorage.getItem('score')) ||
+        {
+            win: 0,
+            lose: 0
+        }
+       
+
+        function playCoinGame(guess1) {
+            
+            if (ComputerGuess > 0.6) {
+                result = 'Heads';
+            } else {
+                result = 'Tails';
+            }
+
+            if (result === guess1) {
+                final = 'You Win';
+                score.win +=1;
+                
+            } else {
+                final = 'You lose'
+                score.lose +=1;
+            }
+           
+            localStorage.setItem('score', JSON.stringify(score));
+            alert(`You selected ${guess1}  and Computer Selected ${result} And Result is ${final} and\n win: ${score.win} \nLose : ${score.lose}     `)
+        }
+
+
+
+    </script>
+</body>
+
+</html>
