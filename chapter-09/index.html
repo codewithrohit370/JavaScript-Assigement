@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+    <!-- 9a -->
+    <button>9a</button>
+
+    <!-- 9b -->
+    <button class="second-btn">9b</button>
+
+    <!-- 9c -->
+    <button class="heads-btn" onclick="cheakClick('heads')">Heads</button>
+    <button class="tails-btn" onclick="cheakClick('tails')">Tails</button>
+    <p></p>
+
+    <!-- 9d -->
+    <input type="text" class="inp-1" onkeydown="enterKey(event)">
+    <button class="Submit-btn" onclick="inpData()">Submit</button>
+    <p class="name_text"></p>
+
+
+    <script>
+        // 9a
+        let getElement = document.querySelector('button');
+        console.log(getElement);
+
+        // 9b
+        let getElement2 = document.querySelector('.second-btn');
+        getElement2.innerHTML = "9b done!";
+
+        // 9c
+        let headsElement = document.querySelector('.heads-btn');
+        let tailsElement = document.querySelector('.tails-btn');
+        let showElement = document.querySelector('p');
+
+        function cheakClick(data) {
+            if (data === 'heads') {
+                showElement.innerHTML = 'You choice : heads';
+            } else {
+                showElement.innerHTML = 'You choice : tails';
+            }
+        }
+
+        // 9d
+
+        function inpData() {
+            let inputElement = document.querySelector('.inp-1');
+            let getData = inputElement.value;
+            let nameElement = document.querySelector('.name_text');
+            nameElement.innerHTML = `Your name is : ${getData}`;
+        }
+
+        function enterKey(event) {
+            if (event.key === 'Enter') {
+               inpData()
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

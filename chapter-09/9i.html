@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Card Quantity Projet</p>
+    <button onclick="console.log(countQuantity)">Show Quantity</button>
+    <button onclick="
+                        updateCardQuantity(1)
+                    ">Add the Quantity</button>
+    <button onclick="
+                                updateCardQuantity(2)
+                                    ">+2</button>
+    <button onclick="
+                updateCardQuantity(3)
+                ">+3</button>
+
+    <button onclick="
+                updateCardQuantity(4)
+                ">+4</button>
+    <button onclick="
+                    updateCardQuantity(5)
+                    ">+5</button>
+
+    <button onclick="
+                updateCardQuantity(-1)
+                    ">Remove the Quantity</button>
+
+    <button onclick="
+                    updateCardQuantity(-2)
+                    ">-2</button>
+    <button onclick="
+                    updateCardQuantity(-3)
+                    ">-3</button>
+
+                    <button onclick="resetButton()">Reset</button>
+
+    <p class="p-1">Cart Quantity: 0 </p>
+
+
+
+
+    <script>
+        let countQuantity = JSON.parse(localStorage.getItem('countQuantity')) || 0;
+        let showText = document.querySelector('.p-1');
+        showText.innerHTML = `Cart Quantity: ${countQuantity}`;
+        function updateCardQuantity(number) {
+
+            if (number > 0) {
+                if ((countQuantity + number > 10)) {
+                    alert('The cart is full');
+                    return;
+
+                } else {
+                    countQuantity += number;
+                    console.log(countQuantity);
+                }
+
+            } else {
+                if (countQuantity - (-number) < 0) {
+                    alert('Not enough item in the cart');
+                } else {
+                    countQuantity -= (-number);
+                    console.log(countQuantity);
+                }
+            }
+            showText.innerHTML = `Cart Quantity: ${countQuantity}`;
+            localStorage.setItem('countQuantity',JSON.stringify(countQuantity));
+
+        }
+
+        function resetButton(){
+            countQuantity = 0;
+            showText.innerHTML = `Cart Quantity: ${countQuantity}`;
+             localStorage.setItem('countQuantity',JSON.stringify(countQuantity));
+             
+        }
+    </script>
+
+</body>
+
+</html>

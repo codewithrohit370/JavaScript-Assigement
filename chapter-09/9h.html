@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" onkeydown="keytext(event)" >
+    <p></p>
+    <script>
+       function keytext(event){
+         displayText();
+       }
+
+        function displayText(){
+            let textElement = document.querySelector('input').value;
+            let showText =  document.querySelector('p');
+            showText.innerHTML = `${textElement}`;
+            console.log(showText);
+        }
+    </script>
+</body>
+</html>
