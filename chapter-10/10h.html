@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cost-input {
+        font-size: 15px;
+        padding: 10px;
+      }
+
+      .calculate-button {
+        background-color: green;
+        color: white;
+        border: none;
+        font-size: 15px;
+        padding: 12px 15px;
+        cursor: pointer;
+      }
+      .red-text{
+        color: red;
+      }
+
+
+    </style>
+</head>
+
+<body>
+    <p>Amazon Shipping Calculator</p>
+    <input placeholder="Cost of order" class="js-cost-input cost-input" onkeydown="
+      handleCostKeydown(event); ty">
+    <button onclick="
+      calculateTotal();
+    " class="calculate-button">Calculate</button>
+    <p class="js-total-cost"></p>
+
+
+    <script>
+         function handleCostKeydown(event) {
+        if (event.key === 'Enter') {
+          calculateTotal();
+        }
+      }
+
+      function calculateTotal() {
+        const inputElement = document.querySelector('.js-cost-input');
+        const text = document.querySelector('.js-total-cost');
+        let cost = Number(inputElement.value);
+
+        if (cost < 40 && cost > 0) {
+          cost = cost + 10;
+        } else if(cost <=0){
+            text.classList.add('red-text');
+            document.querySelector('.js-total-cost')
+              .innerHTML = `Error: cost cannot be less than $0`;
+              return;
+        }else if(isNaN(cost)){
+             text.classList.add('red-text');
+            document.querySelector('.js-total-cost')
+              .innerHTML = `Error: Type Number`;
+              return;
+        }
+        
+         document.querySelector('.js-total-cost')
+              .innerHTML = `$${cost}`;
+              text.classList.remove('red-text');
+
+      }
+    
+    </script>
+</body>
+
+</html>
