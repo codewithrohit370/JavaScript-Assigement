@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array and loops (Part-2)</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 11o
+        let arr = ['hello', 'world', 'search', 'good']
+        let arr2 = ['not', 'found']
+        let index = -1
+
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === 'search') {
+                index = i;
+            }
+        }
+        console.log(index)
+        index = -1;
+        for (let i = 0; i < arr2.length; i++) {
+            if (arr[i] === 'search') {
+                index = i;
+            }
+        }
+        console.log(index)
+
+
+        // 11p
+        let arr3 = ['hello', 'world', 'search', 'good', 'search']
+        let index2 = -1
+
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === 'search') {
+                index2 = i;
+                break
+            }
+        }
+        console.log(index2)
+
+        index2 = -1;
+        for (let i = 0; i < arr2.length; i++) {
+            if (arr[i] === 'search') {
+                index = i;
+                break
+            }
+        }
+        console.log(index2)
+
+        // 11q
+
+        // function findIndex(array, word) {
+        //     let index = -1
+        //     for (let i = 0; i < array.length; i++) {
+        //         if (array[i] === word) {
+        //             index = i;
+        //             break;
+        //         }
+        //     }
+        //     console.log(index);
+        // }
+
+        // findIndex(['green', 'red', 'blue', 'red'], 'red')
+        // findIndex(['green', 'red', 'blue', 'red'], 'yellow')
+
+        // 11r
+
+        function removeEgg(foods) {
+            let nonEggArray = []
+            for (let i = 0; i < foods.length; i++) {
+                if (foods[i] === 'egg') {
+                    continue
+                } else {
+                    nonEggArray.push(foods[i]);
+                }
+            }
+            return nonEggArray;
+        }
+        console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+
+        // 11s
+
+        function removeEgg2(food) {
+            let nonEggArray = [];
+            let countEgg = 0;
+            for (let i = 0; i < food.length; i++) {
+                if (food[i] === 'egg' && countEgg < 2) {
+                    countEgg++;
+                    continue
+                } else {
+                    nonEggArray.push(food[i]);
+                }
+            }
+            return nonEggArray;
+        }
+        console.log(removeEgg2(['egg', 'apple', 'egg', 'egg', 'ham']));
+
+        // 11t
+
+        function removeEgg3(food) {
+            let revseseArray = food.reverse();
+            let nonEggArray = [];
+            let countEgg = 0;
+            for (let i = 0; i < revseseArray.length; i++) {
+                if (revseseArray[i] === 'egg' && countEgg < 2) {
+                    countEgg++;
+                    continue
+                } else {
+                    nonEggArray.push(revseseArray[i]);
+                }
+            }
+            return nonEggArray.reverse();
+        }
+        console.log(removeEgg3(['egg', 'apple', 'egg', 'egg', 'ham']));
+
+        // 11U
+
+
+        function removeEgg4(food) {
+            let copyArray = food.slice();
+            let revseseArray = copyArray.reverse();
+            let nonEggArray = [];
+            let countEgg = 0;
+            for (let i = 0; i < revseseArray.length; i++) {
+                if (revseseArray[i] === 'egg' && countEgg < 2) {
+                    countEgg++;
+                    continue
+                } else {
+                    nonEggArray.push(revseseArray[i]);
+                }
+            }
+            return nonEggArray.reverse();
+        }
+        const foods = ['egg', 'apple', 'egg', 'egg', 'ham'];
+        console.log(removeEgg4(foods));
+        console.log(foods);
+
+        // 11v
+
+        for (let i = 1; i <= 20; i++) {
+            if (i % 3 === 0 && i % 5 === 0) {
+                console.log('fizzbuzz');
+            } else if (i % 3 === 0) {
+                console.log('fizz');
+            } else if (i % 5 === 0) {
+                console.log('Buzz');
+            } else {
+                console.log(i);
+            }
+        }
+
+        // 11w
+
+        function findIndex(array, word) {
+            let index = -1
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === word) {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+        console.log(findIndex(['green', 'red', 'blue', 'red'], 'red'));
+
+
+        function unique(array) {
+            const emptyArray = []
+            for (let i = 0; i < array.length; i++) {
+                const word = array[i];
+
+                if (findIndex(emptyArray, word) === -1) {
+                    emptyArray.push(word);
+                };
+            }
+            return emptyArray
+        }
+
+        console.log(unique(['green', 'red', 'blue', 'red']));
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
