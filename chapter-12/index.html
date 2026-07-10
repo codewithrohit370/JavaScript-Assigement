@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Function </title>
+</head>
+
+<body>
+
+    <button onclick="finishedDOM()">Start</button>
+    <button onclick="finishedDOM2()" class="btn">Start</button>
+    <button onclick="addCart()" class="btn2">Add to Cart</button>
+    <div class="add-section"></div>
+
+    <button class="add-btn" onclick="titleCount2();
+    massageCount++;">Add</button>
+    <button class="decs-btn" onclick="titleCount2();
+    massageCount--">Decrise</button>
+    <script>
+        // 12a
+        const add = function () {
+            console.log(2 + 3);
+        }
+
+        // 12b
+        function runTwice(fun) {
+            fun();
+            fun();
+        }
+        runTwice(function () { console.log('12b') });
+        runTwice(add);
+
+
+        // 12c
+        function finishedDOM() {
+            setTimeout(function () {
+                let btn = document.querySelector('button');
+                btn.innerText = 'Finished';
+            }, 1000);
+        }
+
+        // 12d
+
+        function finishedDOM2() {
+            let btn = document.querySelector('.btn');
+            btn.innerText = 'Loading...';
+            setTimeout(function () {
+                btn.innerText = 'Finished';
+            }, 1000);
+        }
+
+        // 12e
+        function addCart(){
+            let btn = document.querySelector('.btn2')
+            let add = document.querySelector('.add-section');
+            add.innerText = 'Added';
+            setTimeout(function(){
+                add.innerText = '';
+            },1000)
+
+        }
+
+        // 12f
+            let timeID;
+
+          function addCart(){
+            let add = document.querySelector('.add-section');
+            let isbtn = false;
+            clearTimeout(timeID)
+            if(!isbtn){
+                add.innerText = 'Added';
+                timeID = setTimeout(function(){
+                    add.innerText = '';
+                },3000)
+                isbtn = true;
+            }
+
+        }
+
+        // 12g
+
+        let massage = 'app';
+        function titleChange(){
+            setInterval(function(){
+                if(massage === 'app'){
+                 massage = document.title = `(2) New messages`;
+                }else{
+                  massage = document.title = 'app'
+                }
+            },1000)
+        }
+        // console.log(titleChange());
+
+        // 12h
+
+        let massageCount = 0;
+        let addbtn = document.querySelector('.add-btn');
+        let decsBtn = document.querySelector('.decs-btn');
+        function titleCount(){
+            setInterval(function(){
+                if(massage === 'app'){
+                 document.title = `(${massageCount}) New messages`;
+                }else{
+                 document.title = 'app'
+                }
+            },1000)
+        }
+
+        // 12i
+
+        function titleCount2(){
+            setInterval(function(){
+                if(massageCount<0){
+                    document.title = 'App';
+                }else{
+                    document.title = `(${massageCount}) New messages`;
+                }
+            })
+        }
+
+
+
+    </script>
+</body>
+
+</html>
