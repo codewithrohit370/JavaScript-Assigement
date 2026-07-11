@@ -31,13 +31,13 @@ body.addEventListener("keydown", (event) => {
     if (event.key === 'a') {
         autoPlay();
     } else if (event.key === 'Backspace') {
-            score.wins = 0
-            score.losses = 0
-            score.ties = 0
+        score.wins = 0
+        score.losses = 0
+        score.ties = 0
 
-            localStorage.removeItem('score')
-            updateScoreElement();
-        
+        localStorage.removeItem('score')
+        updateScoreElement();
+
     }
 })
 
@@ -135,16 +135,36 @@ function playGame(playerMove) {
 Computer`;
 }
 
-let resetbtn = document.querySelector('.js-reset-score-button')
-
+let resetbtn = document.querySelector('.reset-score-button')
+console.log(resetbtn);
 resetbtn.addEventListener("click", () => {
-    score.wins = 0
-    score.losses = 0
-    score.ties = 0
+    body.insertAdjacentHTML("beforeend", `
+        <div class="popup">
+    <p>Are you sure you want to reset the score</p>
+    <button class="confirm-reset">Yes</button>
+    <button class="no-reset">No</button>
+    </div>`)
 
-    localStorage.removeItem('score')
-    updateScoreElement();
+    let yesbtn = document.querySelector('.confirm-reset');
+    yesbtn.addEventListener("click", () => {
+        score.wins = 0
+        score.losses = 0
+        score.ties = 0
+
+        localStorage.removeItem('score')
+        updateScoreElement();
+        document.querySelector(".popup").remove();
+    })
+
+    let nobtn = document.querySelector('.no-reset');
+    nobtn.addEventListener("click", () => {
+        document.querySelector(".popup").remove();
+    })
 })
+
+
+
+
 
 function updateScoreElement() {
     document.querySelector('.js-score')

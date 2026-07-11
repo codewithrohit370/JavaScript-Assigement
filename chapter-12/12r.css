@@ -41,3 +41,23 @@ body {
   padding: 8px 15px;
   cursor: pointer;
 }
+
+.popup{
+    position: fixed;
+    inset: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: wheat;
+    gap: 20px;
+}
+.popup p{
+    color: black;
+}
+.popup button{
+    padding: 5px 20px;
+}
