@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 (Part-2)</title>
+</head>
+<body>
+    <button class="button">click</button>
+    <br>
+    <button class="btn-2">12 D</button>
+    <br>
+    <button class="btn2">12 e</button>
+    <span class="add-section"></span>
+    <br>
+    <button class="btn3">12 f</button>
+    <span class="add-section-2"></span>
+
+    <br>
+    <button class="add-btn">Add</button>
+    <button class="decs-btn">Decrse</button>
+
+    
+    <script>
+        // 12j
+        const multiply = (a,b) => {
+            return a*b;
+        }
+
+        console.log(multiply(2,3));
+        console.log(multiply(7,10));
+
+        // 12k
+        const multiply2 = (a,b) => a*b;
+        console.log(multiply2(2,10))
+
+        // 12L
+
+        function countPostive(nums){
+            let count = 0;
+            nums.forEach((value,index) => {
+                if(value>0){
+                    count++
+                }
+            });
+            return count
+        }
+        console.log(countPostive([1 , -2 , 5]))
+        console.log(countPostive([-2 , 3 , -5 , 7 , 10]))
+
+        // 12M
+
+        function addNum(array,num){
+            const newArray = array.map((value) => value+num )
+            return newArray
+        }
+        console.log(addNum([1 , 2 ,3], 2))
+        console.log(addNum([-2 , -1 , 0, 99], 2))
+
+        // 12n
+
+        function removeEgg(foods){
+            
+            return foods.filter((value, index) => {
+                if(value === 'egg'){
+                    return false
+                }else {
+                    return true
+                }
+            })
+        }
+
+        console.log(removeEgg(['egg' , 'apple' , 'egg' , 'egg' , 'ham']));
+
+        // 12o
+
+         function removeEgg2(foods){
+             let countEgg = 0;
+             return foods.filter((value, index) => {
+                if(value === 'egg' && countEgg < 2){
+                    countEgg++;
+                    return false
+                }else {
+                    return true
+                }
+            })
+        }
+         console.log(removeEgg2(['egg' , 'apple' , 'egg' , 'egg' , 'ham']));
+
+        //  12p
+
+        // 12c to 12i use for 12p question
+        // 12c
+        function finishedDOM() {
+            setTimeout( () => {
+                let btn = document.querySelector('.button');
+                btn.innerText = 'Finished';
+            }, 1000);
+        }
+
+        // 12d
+
+        function finishedDOM2() {
+            let btn = document.querySelector('.btn');
+            btn.innerText = 'Loading...';
+            setTimeout(() => {
+                btn.innerText = 'Finished';
+            }, 1000);
+        }
+
+        // 12e
+        function addCart(){
+            let btn = document.querySelector('.btn2')
+            let add = document.querySelector('.add-section');
+            add.innerText = 'Added';
+            setTimeout(() => {
+                add.innerText = '';
+            },1000)
+
+        }
+
+        // 12f
+            let timeID;
+
+          function addCart(){
+            let add = document.querySelector('.add-section');
+            let isbtn = false;
+            clearTimeout(timeID)
+            if(!isbtn){
+                add.innerText = 'Added';
+                timeID = setTimeout(() =>{
+                    add.innerText = '';
+                },3000)
+                isbtn = true;
+            }
+
+        }
+
+        // 12g
+
+        let massage = 'app';
+        function titleChange(){
+            setInterval(() => {
+                if(massage === 'app'){
+                 massage = document.title = `(2) New messages`;
+                }else{
+                  massage = document.title = 'app'
+                }
+            },1000)
+        }
+        // console.log(titleChange());
+
+        // 12h
+
+        let massageCount = 0;
+        let addbtn = document.querySelector('.add-btn');
+        let decsBtn = document.querySelector('.decs-btn');
+        function titleCount(){
+            setInterval(() => {
+                if(massage === 'app'){
+                 document.title = `(${massageCount}) New messages`;
+                }else{
+                 document.title = 'app'
+                }
+            },1000)
+        }
+
+        // 12i
+
+        function titleCount2(){
+            setInterval(() =>{
+                if(massageCount<0){
+                    document.title = 'App';
+                }else{
+                    document.title = `(${massageCount}) New messages`;
+                }
+            })
+        }
+
+
+        // 12q
+
+        // 12c to 12i use for 12q question
+        // 12c
+        let btn = document.querySelector('.button');
+        btn.addEventListener("click" ,()=> {
+              finishedDOM3()
+        })
+        function finishedDOM3() {
+            setTimeout( () => {
+                let btn = document.querySelector('button');
+                btn.innerText = 'Finished';
+            }, 1000);
+        }
+
+        // 12d
+        let btn2 = document.querySelector('.btn-2');
+        btn2.addEventListener("click", ()=>{
+            finishedDOM4();
+        })
+
+        function finishedDOM4() {
+            btn2.innerText = 'Loading...';
+            setTimeout(() => {
+                btn2.innerText = 'Finished';
+            }, 1000);
+        }
+
+        // 12e
+        let btn3 = document.querySelector('.btn2')
+        btn3.addEventListener("click", ()=>{
+            addCart2();
+        })
+        function addCart2(){
+            let add = document.querySelector('.add-section');
+            add.innerText = 'Added';
+            setTimeout(() => {
+                add.innerText = '';
+            },1000)
+
+        }
+
+        // 12f
+            let timeID2;
+            let btn4 = document.querySelector('.btn3')
+            btn4.addEventListener("click", ()=>{
+            addCart3();
+        })
+
+          function addCart3(){
+            let add = document.querySelector('.add-section-2');
+            let isbtn = false;
+            clearTimeout(timeID2)
+            if(!isbtn){
+                add.innerText = 'Added';
+                timeID = setTimeout(() =>{
+                    add.innerText = '';
+                },3000)
+                isbtn = true;
+            }
+        }
+
+        // 12g
+
+        let massage2 = 'app';
+        function titleChange2(){
+            setInterval(() => {
+                if(massage2 === 'app'){
+                 massage2 = document.title = `(2) New messages`;
+                }else{
+                  massage2 = document.title = 'app'
+                }
+            },1000)
+        }
+        // console.log(titleChange());
+
+        // 12h
+
+        let massageCount2 = 0;
+        
+        function titleCount4(){
+            setInterval(() => {
+                if(massage2 === 'app'){
+                 document.title = `(${massageCount2}) New messages`;
+                }else{
+                 document.title = 'app'
+                }
+            },1000)
+        }
+
+        // 12i
+        let addbtn2 = document.querySelector('.add-btn');
+        let decsBtn3 = document.querySelector('.decs-btn');
+        addbtn2.addEventListener("click", ()=>{
+            massageCount2++;
+            titleCount5();
+
+        })
+        decsBtn3.addEventListener("click", ()=>{
+            massageCount2--;
+            titleCount5()
+        })
+
+        function titleCount5(){
+            setInterval(() =>{
+                if(massageCount2<0){
+                    document.title = 'App';
+                }else{
+                    document.title = `(${massageCount2}) New messages`;
+                }
+            })
+        }
+
+
+        
+
+
+
+
+
+    </script>
+</body>
+</html>
