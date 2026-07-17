@@ -97,6 +97,7 @@ deleteBtn.forEach((btn)=>{
     let product_Element = document.querySelector(`.id-${data}`)
     product_Element.remove();
     removeItem(data);
+    localStorage.setItem("cart",JSON.stringify(cart));
   })
 })
 

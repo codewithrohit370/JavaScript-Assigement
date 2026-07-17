@@ -77,14 +77,17 @@ document.querySelectorAll('.add-to-cart-button').forEach((button) => {
                 productId: itemID,
                 quantity: Number(quantity)
             });
+            localStorage.setItem("cart",JSON.stringify(cart))
         }
         let count = 0
         function addquantity() {
             cart.forEach((item) => {
                 count += item.quantity;
             })
+            
         }
         addquantity()
+        localStorage.setItem("cart",JSON.stringify(cart))
         document.querySelector(".cart-quantity").innerHTML = `${count}`
 
 
