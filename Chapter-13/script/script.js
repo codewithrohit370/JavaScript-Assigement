@@ -1,6 +1,6 @@
-let cart = [
-    
-]
+import { cart } from "../data/itemCart.js";
+import { products } from "../data/products.js";
+
 let html = ''
 products.forEach((item, index) => {
     html += `<div class="product-container">
@@ -97,10 +97,6 @@ document.querySelectorAll('.add-to-cart-button').forEach((button) => {
         addMessagetimeID[itemID] = setTimeout(() => {
             show.classList.remove("New-class");
         }, 2000)
-
-
-
-
     })
 })  
 
