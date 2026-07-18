@@ -1,9 +1,9 @@
-import { cart } from "../data/itemCart.js";
+import { cart, updateCartQuantity } from "../data/itemCart.js";
 import { products } from "../data/products.js";
 
 let html = ''
 products.forEach((item, index) => {
-    html += `<div class="product-container">
+  html += `<div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
               src="${item.image}">
@@ -52,56 +52,59 @@ products.forEach((item, index) => {
           </button>
         </div>`
 
-    document.querySelector(".products-grid").innerHTML = html;
+  document.querySelector(".products-grid").innerHTML = html;
 })
 
 let addMessagetimeID = {};
 
 document.querySelectorAll('.add-to-cart-button').forEach((button) => {
-    button.addEventListener('click', () => {
-        let itemID = button.dataset.productId;
-        let select = document.querySelector(`.js-quantity-selector-${itemID}`)
-        let quantity = select.value
+  button.addEventListener('click', () => {
+    let itemID = button.dataset.productId;
+    let select = document.querySelector(`.js-quantity-selector-${itemID}`)
+    let quantity = select.value
 
-        let matchingItem;
+    let matchingItem;
 
-        cart.forEach((item) => {
-            if (itemID === item.productId) {
-                matchingItem = item;
-            }
-        })
-        if (matchingItem) {
-            matchingItem.quantity += Number(quantity);
-        } else {
-            cart.push({
-                productId: itemID,
-                quantity: Number(quantity)
-            });
-            localStorage.setItem("cart",JSON.stringify(cart))
-        }
-        let count = 0
-        function addquantity() {
-            cart.forEach((item) => {
-                count += item.quantity;
-            })
-            
-        }
-        addquantity()
-        localStorage.setItem("cart",JSON.stringify(cart))
-        document.querySelector(".cart-quantity").innerHTML = `${count}`
-
-
-
-        let show = document.querySelector(`.js-added-to-cart-${itemID}`)
-        show.classList.add("New-class");
-
-        clearTimeout(addMessagetimeID[itemID]);
-
-        addMessagetimeID[itemID] = setTimeout(() => {
-            show.classList.remove("New-class");
-        }, 2000)
+    cart.forEach((item) => {
+      if (itemID === item.productId) {
+        matchingItem = item;
+      }
     })
-})  
+    if (matchingItem) {
+      matchingItem.quantity += Number(quantity);
+    } else {
+      cart.push({
+        productId: itemID,
+        quantity: Number(quantity)
+      });
+      localStorage.setItem("cart", JSON.stringify(cart))
+    }
+    updateCartQuantity()
+    localStorage.setItem("cart", JSON.stringify(cart))
+    if (updateCartQuantity() < 1) {
+      document.querySelector(".cart-quantity").innerHTML = "";
+    } else {
+      document.querySelector(".cart-quantity").innerHTML = `${updateCartQuantity()}`
+    }
+
+    let show = document.querySelector(`.js-added-to-cart-${itemID}`)
+    show.classList.add("New-class");
+
+    clearTimeout(addMessagetimeID[itemID]);
+
+    addMessagetimeID[itemID] = setTimeout(() => {
+      show.classList.remove("New-class");
+    }, 2000)
+  })
+})
+updateCartQuantity()
+if (updateCartQuantity() < 1) {
+  document.querySelector(".cart-quantity").innerHTML = "";
+} else {
+  document.querySelector(".cart-quantity").innerHTML = `${updateCartQuantity()}`
+}
+
+
 
 
 

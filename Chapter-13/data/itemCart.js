@@ -18,5 +18,23 @@ export function removeItem(data){
     } 
   })
   cart = newCart;
+}
 
+export function updateCartQuantity(){
+  let countCart = 0;
+    cart.forEach((data) => {
+      countCart += Number(data.quantity);
+    })
+    return countCart
+}
+
+export function updateQuantiy(productId,newQuantity){
+  cart.forEach((item)=>{
+    if(productId === item.productId){
+      item.quantity = newQuantity;
+    }
+    
+  })
+
+  localStorage.setItem("cart",JSON.stringify(cart));
 }
