@@ -75,7 +75,8 @@ document.querySelectorAll('.add-to-cart-button').forEach((button) => {
     } else {
       cart.push({
         productId: itemID,
-        quantity: Number(quantity)
+        quantity: Number(quantity),
+        deliveryid:'1'
       });
       localStorage.setItem("cart", JSON.stringify(cart))
     }
