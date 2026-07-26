@@ -130,7 +130,7 @@ function deliveryOptionsHtml(matchingItem2 , item){
       const deliveryPrice = delivaryOption.deliveryPrice === 0 ? "Free ": `$${(delivaryOption.deliveryPrice)/100}`;
       const isCheck = delivaryOption.Id === item.deliveryid;  
       deliveryHtml+=`
-          <div class="delivery-option">
+          <div class="delivery-option js-delivery-option">
             <input type="radio" ${isCheck ? 'checked': ''}
               class="delivery-option-input"
               name="delivery-option-${matchingItem2.id}">
@@ -149,6 +149,12 @@ function deliveryOptionsHtml(matchingItem2 , item){
   
 }
 
+document.querySelectorAll(".js-delivery-option")
+  .forEach((element)=>{
+    element.addEventListener('click',()=>{
+
+    })
+  })
 
 
 
