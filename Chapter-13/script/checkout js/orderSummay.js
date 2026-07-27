@@ -1,7 +1,7 @@
-import { cart, removeItem, updateCartQuantity, updateQuantiy , updateDeliaryOption } from "../data/itemCart.js";
-import { products } from "../data/products.js";
+import { cart, removeItem, updateCartQuantity, updateQuantiy , updateDeliaryOption } from "../../data/itemCart.js";
+import { products } from "../../data/products.js"
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
-import { deliveryOptions } from "../data/delivaryOption.js"
+import { deliveryOptions } from "../../data/delivaryOption.js";
 
 
 function renderCart(){
@@ -156,8 +156,8 @@ document.querySelectorAll(".js-delivery-option")
     element.addEventListener('click',()=>{
       const productId = element.dataset.productId;
       const OptionsId = element.dataset.optionId;
-      renderCart();
       updateDeliaryOption(productId, OptionsId)
+      renderCart();
     })
   })
 
