@@ -40,3 +40,15 @@ export function updateQuantiy(productId,newQuantity){
 
   localStorage.setItem("cart",JSON.stringify(cart));
 }
+
+export function updateDeliaryOption(productId, OptionID){
+   let matchingItem;
+
+    cart.forEach((item) => {
+      if (productId === item.productId) {
+        matchingItem = item;
+      }
+    })
+    matchingItem.deliveryid = OptionID;
+    localStorage.setItem("cart",JSON.stringify(cart));
+}

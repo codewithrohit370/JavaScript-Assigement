@@ -1,10 +1,11 @@
-import { cart, removeItem, updateCartQuantity, updateQuantiy } from "../data/itemCart.js";
+import { cart, removeItem, updateCartQuantity, updateQuantiy , updateDeliaryOption } from "../data/itemCart.js";
 import { products } from "../data/products.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { deliveryOptions } from "../data/delivaryOption.js"
 
 
-
+function renderCart(){
+  
 let itemHtml = '';
 
 
@@ -130,7 +131,9 @@ function deliveryOptionsHtml(matchingItem2 , item){
       const deliveryPrice = delivaryOption.deliveryPrice === 0 ? "Free ": `$${(delivaryOption.deliveryPrice)/100}`;
       const isCheck = delivaryOption.Id === item.deliveryid;  
       deliveryHtml+=`
-          <div class="delivery-option js-delivery-option">
+          <div class="delivery-option js-delivery-option"
+          data-product-id = "${matchingItem2.id}"
+          data-option-id = "${delivaryOption.Id}">
             <input type="radio" ${isCheck ? 'checked': ''}
               class="delivery-option-input"
               name="delivery-option-${matchingItem2.id}">
@@ -148,13 +151,20 @@ function deliveryOptionsHtml(matchingItem2 , item){
     return deliveryHtml;
   
 }
-
 document.querySelectorAll(".js-delivery-option")
-  .forEach((element)=>{
+.forEach((element)=>{
     element.addEventListener('click',()=>{
-
+      const productId = element.dataset.productId;
+      const OptionsId = element.dataset.optionId;
+      renderCart();
+      updateDeliaryOption(productId, OptionsId)
     })
   })
+
+
+}
+renderCart();
+
 
 
 
