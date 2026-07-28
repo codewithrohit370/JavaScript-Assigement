@@ -2,8 +2,9 @@ import { cart, removeItem, updateCartQuantity, updateQuantiy , updateDeliaryOpti
 import { products } from "../../data/products.js"
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { deliveryOptions } from "../../data/delivaryOption.js";
+import { calculateOrderSummary } from "./paymentSummary.js";
 
-
+console.log(calculateOrderSummary());
 function renderCart(){
   
 let itemHtml = '';
@@ -120,6 +121,7 @@ saveBtn.forEach((save) => {
     } else {
       alert("Enter vaild Quantity");
     }
+    calculateOrderSummary();
   })
 })
 function deliveryOptionsHtml(matchingItem2 , item){
@@ -158,6 +160,7 @@ document.querySelectorAll(".js-delivery-option")
       const OptionsId = element.dataset.optionId;
       updateDeliaryOption(productId, OptionsId)
       renderCart();
+      calculateOrderSummary();
     })
   })
 
