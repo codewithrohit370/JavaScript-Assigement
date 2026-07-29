@@ -1,4 +1,5 @@
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
+import { isWeekend as isSatSun} from "./script/functions.js";
 
 // 15a
 let todayDate = dayjs();
@@ -15,14 +16,7 @@ console.log(beforTodayDate.format('MMMM D'))
 console.log(todayDate.format('dddd'))
 
 // 15e
-function isWeekend(date){
-    let dayDate = date.format('dddd')
-   
-    return dayDate === 'Saturday' || dayDate === 'Sunday';
-}
 
-
-
-console.log(isWeekend(todayDate))
+console.log(isSatSun(todayDate))
 let after_3_days = todayDate.add(3,'days')
-console.log(isWeekend(after_3_days))
+console.log(isSatSun(after_3_days))
