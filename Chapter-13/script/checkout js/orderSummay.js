@@ -85,7 +85,7 @@ deleteBtn.forEach((btn) => {
 
     product_Element.remove();
     removeItem(data);
-    calculateOrderSummary();
+    calculateOrderSummary();  
     document.querySelector(".cart_quantity").innerHTML = `${updateCartQuantity()} item`;
 
     localStorage.setItem("cart", JSON.stringify(cart));
