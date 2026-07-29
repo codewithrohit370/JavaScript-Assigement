@@ -3,6 +3,7 @@ import { products } from "../../data/products.js"
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { deliveryOptions } from "../../data/delivaryOption.js";
 import { calculateOrderSummary } from "./paymentSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeader.js";
 function renderCart(){
 calculateOrderSummary()
   
@@ -83,13 +84,13 @@ deleteBtn.forEach((btn) => {
     removeItem(data);
     renderCart();
     calculateOrderSummary();  
-    document.querySelector(".cart_quantity").innerHTML = `${updateCartQuantity()} item`;
+    renderCheckoutHeader();
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
   })
 })
-document.querySelector(".cart_quantity").innerHTML = `${updateCartQuantity()} item`;
+renderCheckoutHeader();
 
 
 let updateBtn = document.querySelectorAll(".update-quantity-link")
@@ -112,10 +113,9 @@ saveBtn.forEach((save) => {
     let newQuantity = inputValue.value;
     if (newQuantity >= 0 && newQuantity < 1000) {
       updateQuantiy(dataId, newQuantity);
-      console.log(cart);
       let quanitylable = document.querySelector(`.lable-id-${dataId}`)
       quanitylable.innerHTML = newQuantity
-      document.querySelector(".cart_quantity").innerHTML = `${updateCartQuantity()} item`;
+      renderCheckoutHeader(); 
     } else {
       alert("Enter vaild Quantity");
     }
