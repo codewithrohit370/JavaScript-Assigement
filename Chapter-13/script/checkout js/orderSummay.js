@@ -3,9 +3,8 @@ import { products } from "../../data/products.js"
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { deliveryOptions } from "../../data/delivaryOption.js";
 import { calculateOrderSummary } from "./paymentSummary.js";
-
-console.log(calculateOrderSummary());
 function renderCart(){
+calculateOrderSummary()
   
 let itemHtml = '';
 
@@ -73,18 +72,16 @@ cart.forEach((item) => {
             </div>
           </div>
     `
+  })
   document.querySelector(".order-summary").innerHTML = itemHtml;
-})
 
 
 let deleteBtn = document.querySelectorAll(".delete-quantity-link")
 deleteBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     let data = btn.dataset.productId;
-    let product_Element = document.querySelector(`.id-${data}`)
-
-    product_Element.remove();
     removeItem(data);
+    renderCart();
     calculateOrderSummary();  
     document.querySelector(".cart_quantity").innerHTML = `${updateCartQuantity()} item`;
 
