@@ -4,6 +4,7 @@ import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { deliveryOptions,  deliveryOptionHtml2 } from "../../data/delivaryOption.js";
 import { calculateOrderSummary } from "./paymentSummary.js";
 import { renderCheckoutHeader } from "./checkoutHeader.js";
+import "../../data/cart-oops.js";
 
 function renderCart(){
 calculateOrderSummary()
