@@ -19,11 +19,11 @@ class Cart {
         ];
 
         if (!savedCart) {
-            this.saveToStorage();
+            this.#saveToStorage();
         }
     }
 
-    saveToStorage() {
+    #saveToStorage() {
         localStorage.setItem(
             this.localStorageKey,
             JSON.stringify(this.cartItems)
@@ -35,7 +35,7 @@ class Cart {
             return item.productId !== productId;
         });
 
-        this.saveToStorage();
+        this.#saveToStorage();
     }
 
     updateCartQuantity() {
@@ -55,7 +55,7 @@ class Cart {
             }
         });
 
-        this.saveToStorage();
+        this.#saveToStorage();
     }
 
     updateDeliveryOption(productId, optionID) {
@@ -65,7 +65,7 @@ class Cart {
 
         if (matchingItem) {
             matchingItem.deliveryid = optionID;
-            this.saveToStorage();
+            this.#saveToStorage();
         }
     }
 }
