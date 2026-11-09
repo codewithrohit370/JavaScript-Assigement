@@ -1,11 +1,12 @@
 import { cart, removeItem, updateCartQuantity, updateQuantiy, updateDeliaryOption } from "../../data/itemCart.js";
-import { products } from "../../data/products.js"
+import { products , loadproduct  } from "../../data/products.js"
 
 import { deliveryOptions, deliveryOptionHtml2 } from "../../data/delivaryOption.js";
 import { calculateOrderSummary } from "./paymentSummary.js";
 import { renderCheckoutHeader } from "./checkoutHeader.js";
 // import "../../data/cart-class.js";
 
+loadproduct(renderCart);
 function renderCart() {
   calculateOrderSummary()
 

@@ -1,110 +1,114 @@
 import { cart, updateCartQuantity } from "../data/itemCart.js";
-import { products } from "../data/products.js";
+import { products , loadproduct } from "../data/products.js";
 
-let html = ''
-products.forEach((item, index) => {
-  html += `<div class="product-container">
-          <div class="product-image-container">
-            <img class="product-image"
-              src="${item.image}">
-          </div>
+loadproduct(renderproduct);
 
-          <div class="product-name limit-text-to-2-lines">
-            ${item.name}
-          </div>
+function renderproduct(){
 
-          <div class="product-rating-container">
-            <img class="product-rating-stars"
-              src="images/ratings/rating-${item.rating.stars * 10}.png">
-            <div class="product-rating-count link-primary">
-              ${item.rating.count}
+    let html = ''
+    products.forEach((item, index) => {
+    html += `<div class="product-container">
+            <div class="product-image-container">
+              <img class="product-image"
+                src="${item.image}">
             </div>
-          </div>
 
-          <div class="product-price">
-            $${(item.priceCents / 100).toFixed(2)}
-          </div>
+            <div class="product-name limit-text-to-2-lines">
+              ${item.name}
+            </div>
 
-          <div class="product-quantity-container">
-            <select class="js-quantity-selector-${item.id}">
-              <option selected value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </div>
+            <div class="product-rating-container">
+              <img class="product-rating-stars"
+                src="images/ratings/rating-${item.rating.stars * 10}.png">
+              <div class="product-rating-count link-primary">
+                ${item.rating.count}
+              </div>
+            </div>
 
-          <div class="product-spacer"></div>
+            <div class="product-price">
+              $${(item.priceCents / 100).toFixed(2)}
+            </div>
 
-          <div class="added-to-cart js-added-to-cart-${item.id}">
-            <img src="images/icons/checkmark.png">
-            Added
-          </div>
+            <div class="product-quantity-container">
+              <select class="js-quantity-selector-${item.id}">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
 
-          <button class="add-to-cart-button button-primary" data-product-id="${item.id}">
-            Add to Cart
-          </button>
-        </div>`
+            <div class="product-spacer"></div>
 
-  document.querySelector(".products-grid").innerHTML = html;
-})
+            <div class="added-to-cart js-added-to-cart-${item.id}">
+              <img src="images/icons/checkmark.png">
+              Added
+            </div>
 
-let addMessagetimeID = {};
+            <button class="add-to-cart-button button-primary" data-product-id="${item.id}">
+              Add to Cart
+            </button>
+          </div>`
 
-document.querySelectorAll('.add-to-cart-button').forEach((button) => {
-  button.addEventListener('click', () => {
-    let itemID = button.dataset.productId;
-    let select = document.querySelector(`.js-quantity-selector-${itemID}`)
-    let quantity = select.value
-
-    let matchingItem;
-
-    cart.forEach((item) => {
-      if (itemID === item.productId) {
-        matchingItem = item;
-      }
-    })
-    if (matchingItem) {
-      matchingItem.quantity += Number(quantity);
-    } else {
-      cart.push({
-        productId: itemID,
-        quantity: Number(quantity),
-        deliveryid:'1'
-      });
-      localStorage.setItem("cart", JSON.stringify(cart))
-    }
-    updateCartQuantity()
-    localStorage.setItem("cart", JSON.stringify(cart))
-    if (updateCartQuantity() < 1) {
-      document.querySelector(".cart-quantity").innerHTML = "";
-    } else {
-      document.querySelector(".cart-quantity").innerHTML = `${updateCartQuantity()}`
-    }
-
-    let show = document.querySelector(`.js-added-to-cart-${itemID}`)
-    show.classList.add("New-class");
-
-    clearTimeout(addMessagetimeID[itemID]);
-
-    addMessagetimeID[itemID] = setTimeout(() => {
-      show.classList.remove("New-class");
-    }, 2000)
+    document.querySelector(".products-grid").innerHTML = html;
   })
-})
-updateCartQuantity()
-if (updateCartQuantity() < 1) {
-  document.querySelector(".cart-quantity").innerHTML = "";
-} else {
-  document.querySelector(".cart-quantity").innerHTML = `${updateCartQuantity()}`
-}
 
+  let addMessagetimeID = {};
+
+  document.querySelectorAll('.add-to-cart-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      let itemID = button.dataset.productId;
+      let select = document.querySelector(`.js-quantity-selector-${itemID}`)
+      let quantity = select.value
+
+      let matchingItem;
+
+      cart.forEach((item) => {
+        if (itemID === item.productId) {
+          matchingItem = item;
+        }
+      })
+      if (matchingItem) {
+        matchingItem.quantity += Number(quantity);
+      } else {
+        cart.push({
+          productId: itemID,
+          quantity: Number(quantity),
+          deliveryid:'1'
+        });
+        localStorage.setItem("cart", JSON.stringify(cart))
+      }
+      updateCartQuantity()
+      localStorage.setItem("cart", JSON.stringify(cart))
+      if (updateCartQuantity() < 1) {
+        document.querySelector(".cart-quantity").innerHTML = "";
+      } else {
+        document.querySelector(".cart-quantity").innerHTML = `${updateCartQuantity()}`
+      }
+
+      let show = document.querySelector(`.js-added-to-cart-${itemID}`)
+      show.classList.add("New-class");
+
+      clearTimeout(addMessagetimeID[itemID]);
+
+      addMessagetimeID[itemID] = setTimeout(() => {
+        show.classList.remove("New-class");
+      }, 2000)
+    })
+  })
+  updateCartQuantity()
+  if (updateCartQuantity() < 1) {
+    document.querySelector(".cart-quantity").innerHTML = "";
+  } else {
+    document.querySelector(".cart-quantity").innerHTML = `${updateCartQuantity()}`
+  }
+}
 
 
 
